@@ -5,4 +5,5 @@
     <string name="second_operand">Seconde Opérande</string>
     <string name="btn_compute">Calculer</string>
     <string name="appel_urgence">Appel Urgence</string>
+    <string name="rechercher">Rechercher</string>
 </resources>

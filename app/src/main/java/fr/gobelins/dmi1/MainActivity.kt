@@ -14,8 +14,8 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
     private lateinit var btnHomeCompute: Button
-    private  lateinit var callEmergencyNumber: EmergencyNumber
-    private  lateinit var btnEmergencyCall : Button
+    private lateinit var btnEmergencyCall : Button
+    private lateinit var btnRechercher : Button
 
     companion object {
         private const val REQUEST_CALL_PERMISSION_CODE = 1
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         btnHomeCompute = findViewById(R.id.btn_home_compute)
         btnEmergencyCall = findViewById(R.id.btn_appel_urgence)
+        btnRechercher = findViewById(R.id.btn_rechercher)
 
         btnHomeCompute.setOnClickListener {
             val intent = Intent(this, ComputeActivity::class.java)
@@ -45,6 +46,13 @@ class MainActivity : AppCompatActivity() {
                 //Permission already granted, make the call
                 makePhoneCall(phone_number)
             }
+        }
+
+        btnRechercher.setOnClickListener {
+            // URL à ouvrir
+            val url = "https://google.fr"
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(browserIntent)
         }
     }
 
