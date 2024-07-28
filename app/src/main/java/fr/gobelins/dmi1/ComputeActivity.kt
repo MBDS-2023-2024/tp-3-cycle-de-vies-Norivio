@@ -1,5 +1,6 @@
 package fr.gobelins.dmi1
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -31,6 +32,7 @@ class ComputeActivity : AppCompatActivity() {
         val operation = intent.getStringExtra("operation") ?: "ADD"
     }
 
+    @SuppressLint("SetTextI18n")
     private fun Add(){
         // Récupérer les valeurs des EditText au moment du clic
         val firstValue = firstOperand.text.toString()
@@ -42,9 +44,9 @@ class ComputeActivity : AppCompatActivity() {
 
         if (firstNumber != null && secondNumber != null) {
             // Effectuer l'addition
-            val resultOperand = firstNumber + secondNumber
+            val resultOperand = firstNumber.plus(secondNumber) //firstNumber + secondNumber
             // Afficher le résultat
-            result.text = resultOperand.toString()
+            result.text = "Résultat: $resultOperand"
         } else {
             // Afficher un message d'erreur
             result.text = "Veuillez entrer des valeurs valides"

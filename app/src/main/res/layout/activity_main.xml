@@ -12,4 +12,10 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_home_compute" />
 
+    <Button
+        android:id="@+id/btn_appel_urgence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/appel_urgence" />
+
 </LinearLayout>
