@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnHomeCompute: Button
     private lateinit var btnEmergencyCall : Button
     private lateinit var btnRechercher : Button
+    private lateinit var btnPartager : Button
 
     companion object {
         private const val REQUEST_CALL_PERMISSION_CODE = 1
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         btnHomeCompute = findViewById(R.id.btn_home_compute)
         btnEmergencyCall = findViewById(R.id.btn_appel_urgence)
         btnRechercher = findViewById(R.id.btn_rechercher)
+        btnPartager = findViewById(R.id.btn_partager)
 
         btnHomeCompute.setOnClickListener {
             val intent = Intent(this, ComputeActivity::class.java)
@@ -53,6 +55,24 @@ class MainActivity : AppCompatActivity() {
             val url = "https://google.fr"
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(browserIntent)
+        }
+
+        btnPartager.setOnClickListener {
+            // Contenu à partager
+            val shareContent = "Tu es l'un des meilleurs professeurs de la formation MBDS."
+
+            // Intent de partage
+            val shareIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, shareContent)
+                type = "text/plain"
+            }
+
+            // Afficher le sélecteur de partage
+            val chooser = Intent.createChooser(shareIntent, "Partager via")
+            if (shareIntent.resolveActivity(packageManager) != null) {
+                startActivity(chooser)
+            }
         }
     }
 

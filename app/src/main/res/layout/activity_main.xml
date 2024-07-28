@@ -23,4 +23,10 @@
         android:layout_height="wrap_content"
         android:text="@string/rechercher" />
 
+    <Button
+        android:id="@+id/btn_partager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/partager" />
+
 </LinearLayout>
