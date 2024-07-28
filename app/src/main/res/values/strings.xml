@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">MBDS Calcul</string>
+    <string name="btn_home_compute">Faire un calcul</string>
+    <string name="first_operand">Première Opérande</string>
+    <string name="second_operand">Seconde Opérande</string>
+    <string name="btn_compute">Calculer</string>
 </resources>
