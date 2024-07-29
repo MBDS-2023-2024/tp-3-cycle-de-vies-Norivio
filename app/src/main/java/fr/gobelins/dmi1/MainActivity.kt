@@ -1,6 +1,7 @@
 package fr.gobelins.dmi1
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         private const val REQUEST_CALL_PERMISSION_CODE = 1
     }
 
+    @SuppressLint("QueryPermissionsNeeded")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -86,14 +88,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri)).apply {
                 setPackage("com.google.android.apps.maps")
             }
-            if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+            /*if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             } else {
                 // L'application Google Maps n'est pas installée
                 val webUri = "http://maps.google.com/maps?daddr=$destination"
                 val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(webUri))
                 startActivity(webIntent)
-            }
+            }*/
         }
     }
 
