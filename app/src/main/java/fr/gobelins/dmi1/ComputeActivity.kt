@@ -35,17 +35,13 @@ class ComputeActivity : AppCompatActivity() {
         val secondValue = secondOperand.text.toString()
 
         // Convertir les valeurs en Int
-        val firstNumber: Int? = firstValue.toIntOrNull()
-        val secondNumber: Int? = secondValue.toIntOrNull()
+        val firstNumber = firstValue.toDoubleOrNull()?:return run { result.text = "Erreur" }
+        val secondNumber = secondValue.toDoubleOrNull()?: return run{result.text = "Erreur"}
 
-        if (firstNumber != null && secondNumber != null) {
-            // Effectuer l'addition
-            val resultOperand = firstNumber.plus(secondNumber) //firstNumber + secondNumber
-            // Afficher le résultat
-            result.text = "Résultat: $resultOperand"
-        } else {
-            // Afficher un message d'erreur
-            result.text = "Veuillez entrer des valeurs valides"
-        }
+        // Effectuer l'addition
+        val resultOperand = firstNumber.plus(secondNumber)
+
+        // Afficher le résultat
+        result.text = "Résultat: $resultOperand"
     }
 }
