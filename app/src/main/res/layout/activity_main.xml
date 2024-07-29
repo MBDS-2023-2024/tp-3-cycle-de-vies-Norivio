@@ -29,4 +29,10 @@
         android:layout_height="wrap_content"
         android:text="@string/partager" />
 
+    <Button
+        android:id="@+id/btn_itineraire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/itin_raire" />
+
 </LinearLayout>

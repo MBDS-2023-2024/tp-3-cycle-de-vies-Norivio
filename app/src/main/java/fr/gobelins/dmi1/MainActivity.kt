@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnEmergencyCall : Button
     private lateinit var btnRechercher : Button
     private lateinit var btnPartager : Button
+    private lateinit var btnItineraire : Button
 
     companion object {
         private const val REQUEST_CALL_PERMISSION_CODE = 1
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         btnEmergencyCall = findViewById(R.id.btn_appel_urgence)
         btnRechercher = findViewById(R.id.btn_rechercher)
         btnPartager = findViewById(R.id.btn_partager)
+        btnItineraire = findViewById(R.id.btn_itineraire)
 
         btnHomeCompute.setOnClickListener {
             val intent = Intent(this, ComputeActivity::class.java)
@@ -72,6 +74,25 @@ class MainActivity : AppCompatActivity() {
             val chooser = Intent.createChooser(shareIntent, "Partager via")
             if (shareIntent.resolveActivity(packageManager) != null) {
                 startActivity(chooser)
+            }
+        }
+
+        btnItineraire.setOnClickListener{
+            // Coordonnées des Papeteries Gobelins
+            val destination = "48.8335,2.3554" // Coordonnées des Papeteries Gobelins
+
+            // URI pour Google Maps
+            val uri = "google.navigation:q=$destination"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri)).apply {
+                setPackage("com.google.android.apps.maps")
+            }
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            } else {
+                // L'application Google Maps n'est pas installée
+                val webUri = "http://maps.google.com/maps?daddr=$destination"
+                val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(webUri))
+                startActivity(webIntent)
             }
         }
     }
